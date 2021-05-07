@@ -3,7 +3,15 @@ import { BaseComponent } from "../core/BaseComponent";
 export class Header extends BaseComponent {
 
   constructor($root){
-    super($root)
+    super($root, {
+      listeners: ['click'], 
+    })
+    this.name = 'Header';
+  }
+
+  click(){
+    console.log('click Header')
+    console.log(this.name);
   }
 
   toHTML() {

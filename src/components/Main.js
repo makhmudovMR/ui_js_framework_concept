@@ -12,11 +12,25 @@ export class Main{
 
   render(){
     console.log(this.components);
-    this.components.map(Component => {
+    /**
+     * Проходимся по массиву классов компонетов и создаем объекты этих классов
+     * добавляя в корневой узел div html который возращает компонент (у каждого компанента своя обертка div)
+     * добавляем в корневой div app (корневой контейнер приложения) divы копонентов
+     * и возвращаем массив объектов копонентов
+     */
+    this.components = this.components.map(Component => {
       const $div = document.createElement('div');
       const comp = new Component($div);
       $div.innerHTML = comp.toHTML();
       this.$app.append($div);
+      return comp;
     });
+
+    /**
+     * Инициализируем слушатели компонентов
+     */
+    this.components.forEach(component => {
+      component.init();
+    })
   }
 }
