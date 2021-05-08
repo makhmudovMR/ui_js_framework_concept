@@ -1,6 +1,7 @@
 import { BaseComponent } from "../core/BaseComponent";
 import { Content } from './Content';
 import { Header } from './Header';
+import { Emitter } from "../core/Emitter";
 
 export class Main{
 
@@ -8,6 +9,7 @@ export class Main{
     const app = document.querySelector('#app');
     this.$app = app;
     this.components = [Header, Content];
+    this.emitter = new Emitter();
   }
 
   render(){
@@ -20,7 +22,9 @@ export class Main{
      */
     this.components = this.components.map(Component => {
       const $div = document.createElement('div');
-      const comp = new Component($div);
+      const comp = new Component($div, {
+        emitter: this.emitter,
+      });
       $div.innerHTML = comp.toHTML();
       this.$app.append($div);
       return comp;
