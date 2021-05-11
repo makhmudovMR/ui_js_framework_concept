@@ -27,12 +27,12 @@ export class Emitter{
 
 // Example
 
-const emitter = new Emitter();
+// const emitter = new Emitter();
 
-emitter.subscribe('event1', (data1, data2) => {
-  console.log('data1: ', data1);
-  console.log('data2: ', data2);
-});
+// emitter.subscribe('event1', (data1, data2) => {
+//   console.log('data1: ', data1);
+//   console.log('data2: ', data2);
+// });
 
 
-emitter.emit('event1', 'hello', 'world')
+// emitter.emit('event1', 'hello', 'world')
