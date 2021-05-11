@@ -7,11 +7,11 @@ export class BaseComponent extends DomListener{
   }
 
   init(){
-    super.initListeners();
+    this.initListeners();
   }
 
   destroy(){
-    super.removeListeners();
+    this.removeListeners();
   }
 
   toHTML(){
