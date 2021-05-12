@@ -18,21 +18,20 @@ export class Emitter{
     this.listeners[event] = this.listeners[event] || []
     this.listeners[event].push(fn);
     return () => {
-      this.listeners[event] = this.listeners[event].filter(listener => {
-        listener => listener !== fn;
-      })
+      console.log('unsub was called')
+      this.listeners[event] = this.listeners[event].filter(listener => listener !== fn)
     }
   }
 }
 
 // Example
 
-const emitter = new Emitter();
+// const emitter = new Emitter();
 
-emitter.subscribe('event1', (data1, data2) => {
-  console.log('data1: ', data1);
-  console.log('data2: ', data2);
-});
+// emitter.subscribe('event1', (data1, data2) => {
+//   console.log('data1: ', data1);
+//   console.log('data2: ', data2);
+// });
 
 
-emitter.emit('event1', 'hello', 'world')
+// emitter.emit('event1', 'hello', 'world')

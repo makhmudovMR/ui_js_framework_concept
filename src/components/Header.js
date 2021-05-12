@@ -21,7 +21,7 @@ export class Header extends BaseComponent {
     return `
       <div>
         <h3>Header</h3>
-        <input type="text"  name="test">
+        <input type="text" name="test">
       </div>
     `;
   }
