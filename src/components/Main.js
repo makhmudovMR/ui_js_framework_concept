@@ -6,14 +6,12 @@ import { Emitter } from "../core/Emitter";
 export class Main{
 
   constructor() {
-    const app = document.querySelector('#app');
-    this.$app = app;
     this.components = [Header, Content];
     this.emitter = new Emitter();
   }
 
-  render(){
-    console.log(this.components);
+  getRoot(){
+    const $root = document.createElement('div');
     /**
      * Проходимся по массиву классов компонетов и создаем объекты этих классов
      * добавляя в корневой узел div html который возращает компонент (у каждого компанента своя обертка div)
@@ -26,10 +24,16 @@ export class Main{
         emitter: this.emitter,
       });
       $div.innerHTML = comp.toHTML();
-      this.$app.append($div);
+      $root.append($div);
       return comp;
     });
+    // this.components.forEach(component => {
+    //   component.init();
+    // })
+    return $root;
+  }
 
+  init(){
     /**
      * Инициализируем слушатели компонентов
      */
@@ -37,4 +41,5 @@ export class Main{
       component.init();
     })
   }
+
 }

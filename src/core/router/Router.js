@@ -20,9 +20,16 @@ export class Router{
   }
 
   changePageHandler(event){
-    const Page = this.routes.dashboard
-    const page = new Page();
-    this.$placeholder.append(page.getRoot());
+    if(this.page){
+      this.page.destroy();
+    }
+    this.$placeholder.innerHTML = '';
+
+    const Page = this.routes[ActiveRoute.path];
+    this.page = new Page(ActiveRoute.params);
+
+    this.$placeholder.append(this.page.getRoot());
+    this.page.afterRender();
   }
 
   destroy(){
