@@ -24,6 +24,8 @@ export class DomListener {
 
   /** Удаление слушателей */
   removeListeners(){
-
+    this.listeners.forEach(listener => {
+      this.$root.removeEventListener(listener, this[listener]);
+    })
   }
 }

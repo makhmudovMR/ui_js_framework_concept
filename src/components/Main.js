@@ -42,4 +42,10 @@ export class Main{
     })
   }
 
+  destroy(){
+    this.components.forEach(component => {
+      component.destroy();
+    })
+  }
+
 }

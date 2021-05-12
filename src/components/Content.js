@@ -12,9 +12,15 @@ export class Content extends BaseComponent{
 
   init(){
     super.init();
-    this.emitter.subscribe('myevent', (data) => {
-      this.$root.innerHTML = data
+    this.unsub = this.emitter.subscribe('myevent', (data) => {
+      this.$root.innerHTML = data;
     });
+  }
+
+  destroy(){
+    super.destroy();
+    console.log('destroy was called')
+    this.unsub();
   }
   
   toHTML(){

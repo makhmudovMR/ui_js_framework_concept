@@ -13,6 +13,7 @@ export class SomePage extends Page{
   }
 
   destroy(){
+    this.main.destroy();
     console.log('destroy was called');
   }
 
